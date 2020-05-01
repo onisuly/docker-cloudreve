@@ -14,7 +14,7 @@ RUN apk add --no-cache $RUN_DEP \
     && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.31-r0/glibc-2.31-r0.apk \
     && apk add glibc-2.31-r0.apk \
     && rm glibc-2.31-r0.apk \
-    && CLOUDREVE_VERSION=$(wget -q -O- "https://api.github.com/repos/cloudreve/Cloudreve/releases" | awk '/tag_name/{print $4;exit}' FS='[""]') \
+    && CLOUDREVE_VERSION=$(wget -q -O- "https://api.github.com/repos/cloudreve/Cloudreve/releases/latest" | awk '/tag_name/{print $4;exit}' FS='[""]') \
     && wget -O cloudreve.tar.gz https://github.com/cloudreve/Cloudreve/releases/download/${CLOUDREVE_VERSION}/cloudreve_${CLOUDREVE_VERSION}_linux_amd64.tar.gz \
     && mkdir /cloudreve \
     && tar -zxf /cloudreve.tar.gz -C /cloudreve \
